@@ -83,7 +83,7 @@ def create_bucket(bucket_name, region=None):
             s3_client = boto3.client('s3', region_name=region)
             location = {'LocationConstraint': region}
             s3_client.create_bucket(Bucket=bucket_name,
-                                    CreateBucketConfiguration=location)
+            CreateBucketConfiguration=location)
     except ClientError as e:
         logging.error(e)
         return False
@@ -99,6 +99,17 @@ create_bucket(bucket_name, region)
 - To run python file, run `python name_of_file.py`
 <br> </br> 
 - ------------------------------------
-### Upload a file 
+### List existing buckets
+-
+```
+# Retrieve the list of existing buckets
+s3 = boto3.client('s3')
+response = s3.list_buckets()
 
+# Output the bucket names
+print('Existing buckets:')
+for bucket in response['Buckets']:
+    print(f'  {bucket["Name"]}')
+
+```
 
