@@ -100,8 +100,10 @@ create_bucket(bucket_name, region)
 <br> </br> 
 - ------------------------------------
 ### List existing buckets
--
+- Create a new python file and add below
 ```
+import boto3
+
 # Retrieve the list of existing buckets
 s3 = boto3.client('s3')
 response = s3.list_buckets()
@@ -112,4 +114,11 @@ for bucket in response['Buckets']:
     print(f'  {bucket["Name"]}')
 
 ```
+- This should list al the available buckets, you can check to see if you have successfully created one
+- ------------------------------------
+### Uploading files
+- new python file
+
+
+
 
